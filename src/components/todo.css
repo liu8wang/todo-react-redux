@@ -1,0 +1,25 @@
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+
+  transition: all 0.1s ease-in-out;
+}
+
+.todo-item:hover {
+  background-color: #f0f0f0;
+}
+.todo-item.completed {
+  color: #cccccc;
+}
+
+.todo-item .title {
+  flex-grow: 1;
+  text-align: left;
+  padding: 0 15px;
+}
+
+.todo-item.completed .title {
+  text-decoration: line-through;
+}

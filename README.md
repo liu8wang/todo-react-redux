@@ -18,3 +18,7 @@ npm start
 ```
 
 and `visit http://localhost:3000`
+
+## Notes
+
+Using https://jsonplaceholder.typicode.com/todos for getting list of todos, but showing only random 30 items

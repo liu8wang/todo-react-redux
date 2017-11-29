@@ -16,23 +16,32 @@ const enhance = compose(
     completeTodo,
   }),
   withHandlers({
-    handleDelete: props => (id) => {
-      props.deleteCollection(id);
+    handleDelete: props => (idx) => {
+      props.deleteTodo(idx);
     },
-    handleComplete: props => (id) => {
-      props.completeTodo(id);
+    handleComplete: props => (idx) => {
+      props.completeTodo(idx);
     },
   }),
 );
 
 export default enhance(({
-  todo: { completed, name, id },
+  idx,
+  item: { completed, title },
   handleDelete,
   handleComplete,
 }) => (
   <div className={cn('todo-item', { completed })}>
-    <Link onClick={() => handleDelete(id)}>Complete</Link>
-    <div>{ name }</div>
-    <Link onClick={() => handleComplete(id)}>Delete</Link>
+    <div>
+      { completed
+        ? <div><i className="fa fa-check-circle-o" /></div>
+        :
+        <Link onClick={() => handleComplete(idx)}><i className="fa fa-circle-o" /></Link>
+      }
+    </div>
+    <div className="title">{ title }</div>
+    <Link onClick={() => handleDelete(idx)}>
+      <i className="fa fa-close" />
+    </Link>
   </div>
 ));

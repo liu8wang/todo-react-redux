@@ -14,12 +14,12 @@ export default enhance(({
   todos,
 }) => (
   <div className="list-wrapper">
-    { todos.length === 0 &&
+    { todos.size === 0 &&
       <div>There is nothing to show.</div>
     }
-    { todos.length > 0 &&
-      todos.map(todo => (
-        <TodoItem key={uniqueId()} item={todo} />
+    { todos.size > 0 &&
+      todos.map((todo, idx) => (
+        <TodoItem key={uniqueId()} item={todo} idx={idx} />
       ))
     }
   </div>
