@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-import { TodoPage } from 'components';
+import { TodoPage } from './components';
 
 const routes = (
   <div id="todo-app">

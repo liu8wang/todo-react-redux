@@ -4,6 +4,6 @@ import todos from './todos';
 
 export default function* rootSaga() {
   yield all([
-    todos()
+    todos(),
   ]);
 }

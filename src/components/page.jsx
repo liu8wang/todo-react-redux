@@ -1,10 +1,9 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { compose, lifecycle } from 'recompose';
-import { TodoList } from 'components';
 
+import { TodoList } from '../components';
 import { GET_TODOS } from '../actions/constants';
 import { getTodos } from '../actions';
 
@@ -16,7 +15,7 @@ const enhance = compose(
     async,
   }) => ({
     todos,
-    status: async.statuses[GET_TODOS]
+    status: async.statuses[GET_TODOS],
   }), {
     getTodos,
   }),
@@ -29,16 +28,16 @@ const enhance = compose(
 
 export default enhance(({
   todos,
-  status
+  status,
 }) => (
-  <div id="todo-container" className='container'>
+  <div id="todo-container" className="container">
     <h2>Todos</h2>
-    <div className='todo-list'>
-      { status === 'pending' && <div className='text-center'>Loading...</div> }
-      { status === 'success' && 
-        <TodoList 
-          todos={todos}
-        />
+    <div className="todo-list">
+      { status === 'pending' &&
+        <div className="text-center">Loading...</div>
+      }
+      { status === 'success' &&
+        <TodoList todos={todos} />
       }
     </div>
   </div>

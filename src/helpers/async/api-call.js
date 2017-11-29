@@ -2,7 +2,7 @@
 import { get } from 'lodash';
 import { call, put } from 'redux-saga/effects';
 
-import * as async from 'helpers/async';
+import * as async from '../async';
 
 export default ({
   type,

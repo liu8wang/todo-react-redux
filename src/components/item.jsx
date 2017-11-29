@@ -1,19 +1,19 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
 import cn from 'classnames';
 import { compose, withHandlers } from 'recompose';
-import { map, uniqueId } from 'lodash';
 
-import Item from './item';
-
-import { deleteTodo, updateTodo } from '../actions';
+import { deleteTodo, completeTodo } from '../actions';
 
 import './todo.css';
 
 const enhance = compose(
   connect(null, {
-    deleteTodo, completeTodo
+    deleteTodo,
+    completeTodo,
   }),
   withHandlers({
     handleDelete: props => (id) => {
@@ -27,10 +27,12 @@ const enhance = compose(
 
 export default enhance(({
   todo: { completed, name, id },
+  handleDelete,
+  handleComplete,
 }) => (
-  <div className={ cn('todo-item', { completed }) }>
-    <div onClick={() => {}}>Complete</div>
+  <div className={cn('todo-item', { completed })}>
+    <Link onClick={() => handleDelete(id)}>Complete</Link>
     <div>{ name }</div>
-    <div onClick={() => {}}>Delete</div>
+    <Link onClick={() => handleComplete(id)}>Delete</Link>
   </div>
 ));

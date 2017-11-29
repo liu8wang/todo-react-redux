@@ -1,16 +1,16 @@
 
 import { takeLatest } from 'redux-saga/effects';
-import { apiClient, async } from 'helpers';
+import { apiClient, async } from '../helpers';
 
-import * as cx from 'actions/constants';
+import { GET_TODOS } from '../actions/constants';
 
 const getTodos = async.apiCall({
-  type: cx.GET_TODOS,
+  type: GET_TODOS,
   method: apiClient.get,
   path: () => '/todos',
   success: res => res.data,
 });
 
 export default function* rootSaga() {
-  yield takeLatest(cx.GET_TODOS, getTodos);
+  yield takeLatest(GET_TODOS, getTodos);
 }
